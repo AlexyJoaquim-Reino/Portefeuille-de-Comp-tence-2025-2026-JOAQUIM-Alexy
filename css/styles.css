@@ -1,0 +1,2276 @@
+/* --------- BASE ----------- */
+
+:root {
+    --bg: #121212;
+    --text: #f5f0e8;
+    --text-muted: #b8b8b8;
+
+    --exprimer: #ffd84d;
+    --entreprendre: #4fc3ff;
+    --metiers: #ff66cc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.home {
+    overflow:hidden;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif; 
+    background: radial-gradient(circle at center, #1b1b1b 0%, var(--bg) 65%);
+    color: var(--text);
+
+}
+
+/* --------- PAGE D'ACCUEIL ----------- */
+
+.intro {
+    min-height: 100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding: 2rem;
+}
+
+.intro-title {
+    font-size: clamp(2.5rem, 7vw, 6rem);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    opacity: 0;
+    animation: fadeUp 1.4s ease forwards;
+}
+
+.intro-name {
+    margin-top: 1rem;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-weight: 400;
+    color: var(--text-muted);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-align:center;
+    opacity: 0;
+    animation: fadeUp 1.4s ease forwards;
+    animation-delay: 0.8s;
+
+    display:flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.btn-start {
+    margin-top: 3rem;
+    padding: 0.9rem 2.4rem;
+    border: 1px solid rgba(245, 240, 232, 0.5);
+    border-radius: 999px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.95rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUp 1.4s ease forwards;
+    animation-delay: 1.8s;
+    transition: all 0.3s ease;
+}
+
+.btn-start:hover {
+    border-color: var(--exprimer);
+    box-shadow: 0 0 25px rgba(255, 216, 77, 0.35);
+    transform: translateY(-3px);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 480px) {
+    .intro {
+        padding: 1.5rem;
+        justify-content: center;
+    }
+
+    .intro-title {
+        font-size: clamp(2rem, 10vw, 2.8rem);
+        line-height: 1.15;
+        text-align: center;
+        width: 100%;
+    }
+
+    .intro-name {
+        font-size: 0.85rem;
+        line-height: 1.35;
+        letter-spacing: 0.14em;
+        gap: 0.3rem;
+        margin-top: 1.5rem;
+    }
+
+    .btn-start {
+        margin-top: 2.5rem;
+        font-size: 0.8rem;
+        padding: 0.8rem 2rem;
+    }
+}
+
+/* --------- ANIMATION ----------- */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOutDown {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-24px);
+    }
+}
+
+.intro.fade-out {
+    animation: fadeOutDown 2s ease forwards;
+}
+
+/* --------- POUR TOUTES LES PAGES DE SCROLL ----------- */
+
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y proximity;
+}
+
+/* --------- PAGE SÉLECTION ----------- */
+
+.selection {
+    width:100%;
+    text-align: center;
+    opacity: 0;
+    animation: fadeUp 1.2s ease forwards;
+}
+
+.selection-title {
+    position:fixed;
+    top: 4rem;
+    
+    width:100%;
+    left: 0;
+
+    text-align: center;
+
+    z-index:10;
+
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-weight: 400;
+    color: var(--text-muted);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+
+    opacity: 0;
+    animation: fadeUp 1.2s ease forwards;
+}
+
+.choice-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 25vh 0;
+
+    opacity: 0;
+    animation: fadeUp 1.2s ease forwards;
+    animation-delay: 0.5s;
+}
+
+.choice-card {
+    height:50vh;
+
+    display:flex;
+    justify-content:center;
+    align-items : center;
+    
+
+    font-size: clamp(2.5rem, 7vw, 6rem);
+    font-weight: 800;
+    text-decoration: none;
+    color: var(--text);
+    letter-spacing: 0.05em;
+    transition: all 0.35s ease;
+
+    scroll-snap-align: center;
+}
+
+.choice-card:hover {
+    transform: scale(1.04);
+}
+
+.choice-card.exprimer:hover {
+    color: var(--exprimer);
+    text-shadow: 0 0 30px rgba(255, 216, 77, 0.6);
+}
+
+.choice-card.entreprendre:hover {
+    color: var(--entreprendre);
+    text-shadow: 0 0 30px rgba(79, 195, 255, 0.6);
+}
+
+.choice-card.metiers:hover {
+    color: var(--metiers);
+    text-shadow: 0 0 30px rgba(183, 107, 255, 0.6);
+}
+
+.arrow {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.arrow:hover {
+    color: white;
+}
+
+.arrow-up {
+    top: 20px;
+}
+
+.arrow-down {
+    bottom: 20px;
+}
+
+.scroll-arrow {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: none;
+    border: none;
+    color: rgba(245, 240, 232, 0.65);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+    animation: arrowBounce 1.8s infinite;
+}
+
+.scroll-arrow:hover {
+    color: var(--exprimer);
+    text-shadow: 0 0 18px rgba(255, 216, 77, 0.45);
+}
+
+.scroll-arrow.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes arrowBounce {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(8px);
+    }
+}
+
+.selection.fade-out {
+    animation: fadeOutDown 2s ease forwards;
+}
+
+/* --------- PAGE AC EXPRIMER ----------- */
+
+.ac-selection {
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    animation: fadeUp 1.2s ease forwards;
+}
+
+.ac-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 18vh 0;
+
+    opacity: 0;
+    animation: fadeUp 1.2s ease forwards;
+    animation-delay: 0.5s;
+}
+
+.ac-card {
+    height: 32vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: clamp(2.5rem, 7vw, 6rem);
+    font-weight: 800;
+    text-decoration: none;
+    color: var(--exprimer);
+    letter-spacing: 0.05em;
+
+    text-shadow: 0 0 28px rgba(255, 216, 77, 0.45);
+    transition: all 0.35s ease;
+
+    scroll-snap-align: center;
+}
+
+.ac-card:hover {
+    transform: scale(1.04);
+    text-shadow: 0 0 40px rgba(255, 216, 77, 0.75);
+}
+
+/* --------- PAGE AC ENTREPRENDRE ----------- */
+
+.ac-card.ac-entreprendre {
+    color: var(--entreprendre);
+    text-shadow: 0 0 28px rgba(79, 195, 255, 0.45);
+}
+
+.ac-card.ac-entreprendre:hover {
+    transform: scale(1.04);
+    text-shadow: 0 0 40px rgba(79, 195, 255, 0.75);
+}
+
+/* --------- PAGE COMPÉTENCES MÉTIERS ----------- */
+
+.ac-card.ac-metiers {
+    color: var(--metiers);
+    text-shadow: 0 0 28px rgba(183, 107, 255, 0.45);
+}
+
+.ac-card.ac-metiers:hover {
+    transform: scale(1.04);
+    text-shadow: 0 0 40px rgba(183, 107, 255, 0.75);
+}
+
+/* ========================= PAGE DÉTAIL AC 33-01 EXPRIMER ========================= */
+
+.ac-detail {
+    min-height: 100vh;
+    padding: 4rem 8%;
+    color: var(--text);
+    animation: fadeUp 1s ease forwards;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 3rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.back-link:hover {
+    color: var(--exprimer);
+}
+
+.ac-hero {
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.ac-code {
+    color: var(--exprimer);
+    font-size: 1.2rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.ac-detail-title {
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    line-height: 1.15;
+
+    max-width: 1100px;
+    margin: 0 auto;
+
+    color: var(--exprimer);
+
+    text-shadow:
+        0 0 15px rgba(255, 216, 77, 0.4),
+        0 0 35px rgba(255, 216, 77, 0.25);
+}
+
+.ac-trace {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5rem;
+}
+
+.trace-image {
+    width: 100%;
+    max-width: 1200px;
+    border-radius: 12px;
+    box-shadow: 0 0 40px rgba(255, 216, 77, 0.15);
+}
+
+.ac-content {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.ac-block {
+    margin-bottom: 4rem;
+}
+
+.ac-block h2 {
+    color: var(--exprimer);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.ac-block p {
+    line-height: 1.8;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+}
+
+/* ========================= PAGE DÉTAIL AC 33-02 EXPRIMER ========================= */
+
+.ac-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.trace-block {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+    margin-bottom: 8rem;
+}
+
+.trace-block.reverse {
+    flex-direction: row-reverse;
+}
+
+.trace-image,
+.trace-text {
+    flex: 1;
+}
+
+.trace-image img {
+    width: 100%;
+    display: block;
+    border-radius: 20px;
+}
+
+.trace-text h2 {
+    color: #ffd84d;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+}
+
+.trace-text p {
+    line-height: 1.8;
+    color: #d8d8d8;
+}
+
+.mobile-preview img {
+    max-width: 350px;
+    margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+
+    .trace-block,
+    .trace-block.reverse {
+        flex-direction: column;
+    }
+
+    .trace-text {
+        text-align: center;
+    }
+}
+
+.final-showcase{
+    text-align:center;
+    margin-top:8rem;
+}
+
+.final-showcase h2{
+    color:#ffd84d;
+    margin-bottom:1rem;
+}
+
+.final-showcase p{
+    max-width:800px;
+    margin:0 auto 3rem;
+    line-height:1.8;
+}
+
+.final-showcase img{
+    max-width:350px;
+    width:100%;
+    border-radius:20px;
+}
+
+.ac-header {
+    text-align: center;
+    margin-bottom: 6rem;
+}
+
+.ac-number {
+    display: block;
+    font-size: 1.3rem;
+    color: #ffd84d;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.ac-title {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 700;
+    line-height: 1.1;
+
+    color: #ffd84d;
+
+    text-shadow:
+        0 0 15px rgba(255,216,77,0.5),
+        0 0 30px rgba(255,216,77,0.3);
+}
+
+/* ========================= PAGE DÉTAIL AC 33-03 EXPRIMER ========================= */
+
+.project-intro {
+    text-align: center;
+    margin-bottom: 6rem;
+}
+
+.project-category {
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+}
+
+.project-title {
+    color: var(--exprimer);
+
+    font-size: clamp(2rem, 4vw, 3.5rem);
+
+    text-shadow:
+        0 0 15px rgba(255,216,77,0.4),
+        0 0 30px rgba(255,216,77,0.2);
+}
+
+.creatures-gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.creatures-gallery img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+
+    border-radius: 12px;
+
+    transition: 0.3s ease;
+}
+
+.creatures-gallery img:hover {
+    transform: scale(1.03);
+}
+
+.production-steps {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 0 6rem;
+}
+
+.production-step {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 2rem;
+    padding: 3rem 0;
+    border-bottom: 1px solid rgba(255, 216, 77, 0.2);
+}
+
+.step-number {
+    color: var(--exprimer);
+    font-size: 3rem;
+    font-weight: 800;
+    text-shadow: 0 0 25px rgba(255, 216, 77, 0.45);
+}
+
+.step-content h2 {
+    color: var(--exprimer);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.step-content p {
+    color: var(--text-muted);
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.step-image {
+    width: 100%;
+    margin-top: 2rem;
+    border-radius: 15px;
+}
+
+.ia-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.ia-gallery img {
+    width: 100%;
+    border-radius: 12px;
+    transition: 0.3s ease;
+}
+
+.ia-gallery img:hover {
+    transform: scale(1.03);
+}
+
+.ia-pdf-button {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 12px 24px;
+
+    border: 2px solid #FFD84D;
+    border-radius: 30px;
+
+    color: #FFD84D;
+    text-decoration: none;
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+.ia-pdf-button:hover {
+    background: #FFD84D;
+    color: #111;
+}
+
+.ia-button-wrapper {
+    text-align: center;
+}
+
+.final-result{
+    text-align:center;
+    padding:6rem 0;
+}
+
+.final-result h2{
+    color:#f7d348;
+    font-size:clamp(2rem,4vw,3rem);
+    margin-bottom:1.5rem;
+}
+
+.final-result p{
+    max-width:800px;
+    margin:0 auto 2rem;
+    line-height:1.8;
+}
+
+.final-video-btn{
+    display:inline-block;
+    padding:1rem 2rem;
+    border:2px solid #f7d348;
+    border-radius:999px;
+    color:#f7d348;
+    text-decoration:none;
+    font-weight:700;
+    transition:.3s;
+}
+
+.final-video-btn:hover{
+    background:#f7d348;
+    color:#000;
+    box-shadow:0 0 25px rgba(247,211,72,.5);
+}
+
+.illustrator-gallery{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:2rem;
+    margin-top:2rem;
+}
+
+.illustrator-item{
+    text-align:center;
+}
+
+.illustrator-item img{
+    width:100%;
+    border-radius:12px;
+    border:2px solid rgba(247,211,72,.2);
+    transition:.3s;
+}
+
+.illustrator-item img:hover{
+    transform:scale(1.03);
+    border-color:#f7d348;
+    box-shadow:0 0 20px rgba(247,211,72,.3);
+}
+
+.illustrator-item figcaption{
+    margin-top:0.8rem;
+    color:#f7d348;
+    font-weight:600;
+}
+
+.gallery-note{
+    text-align:center;
+    margin-top:2rem;
+    color:#bdbdbd;
+    font-size:0.95rem;
+    font-style:italic;
+}
+
+.illustrator-item a{
+    display:block;
+}
+
+.illustrator-item a:hover img{
+    transform:scale(1.03);
+}
+
+.video-preview {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.step-video {
+    max-width: 900px;
+    height: auto;
+
+    border-radius: 16px;
+    border: 2px solid rgba(255, 216, 77, 0.3);
+    box-shadow: 0 0 20px rgba(255, 216, 77, 0.15);
+}
+
+.video-caption {
+    margin-top: 1rem;
+    max-width: 700px;
+    text-align: center;
+    color: #bdbdbd;
+    font-style: italic;
+}
+
+/* Étape 6 - Capture After Effects */
+
+.motion-final-container {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.motion-final-image {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    border-radius: 12px;
+    border: 2px solid rgba(255, 214, 74, 0.4);
+    box-shadow: 0 0 25px rgba(255, 214, 74, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.motion-final-image:hover {
+    transform: scale(1.02);
+}
+
+.motion-final-caption {
+    max-width: 800px;
+    margin: 20px auto 0;
+    color: #bdbdbd;
+    font-style: italic;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* Étape 7 - Audition */
+
+.audition-container {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.audition-image {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    border-radius: 12px;
+    border: 2px solid #ffd64a;
+    box-shadow: 0 0 30px rgba(255, 214, 74, 0.25);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.audition-image:hover {
+    transform: scale(1.02);
+}
+
+.audition-caption {
+    max-width: 800px;
+    margin: 20px auto 0;
+    color: #bdbdbd;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.audition-click-info {
+    margin-top: 15px;
+    color: #bdbdbd;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 700px) {
+    .production-step {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 900px) {
+
+    .creatures-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+/* ========================= PAGE DÉTAIL AC 33-04 EXPRIMER ========================= */
+
+/* ========================= */
+/* AC33.04 */
+/* ========================= */
+
+.project-intro {
+    max-width: 1000px;
+    margin: 0 auto 80px;
+    text-align: center;
+}
+
+.project-category {
+    color: #f4d03f;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.project-title {
+    font-size: 2.2rem;
+    color: #f4d03f;
+    margin-bottom: 25px;
+}
+
+.project-description {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+    color: #d0d0d0;
+}
+
+/* ========================= */
+/* VIDEO */
+/* ========================= */
+
+.demo-section {
+    max-width: 1100px;
+    margin: 0 auto 100px;
+    text-align: center;
+}
+
+.demo-title {
+    color: #f4d03f;
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+.video-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.step-video {
+    width: 100%;
+    max-width: 1000px;
+    border-radius: 20px;
+    border: 2px solid rgba(244, 208, 63, 0.5);
+    box-shadow: 0 0 30px rgba(244, 208, 63, 0.2);
+}
+
+.video-caption {
+    margin-top: 20px;
+    max-width: 800px;
+    color: #cfcfcf;
+    font-style: italic;
+    line-height: 1.7;
+}
+
+/* ========================= */
+/* FONCTIONNALITÉS */
+/* ========================= */
+
+.features-section {
+    max-width: 1100px;
+    margin: 0 auto 100px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.feature-card {
+    padding: 30px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(244, 208, 63, 0.2);
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(244, 208, 63, 0.5);
+}
+
+.feature-card h2 {
+    color: #f4d03f;
+    margin-bottom: 15px;
+}
+
+.feature-card p {
+    line-height: 1.8;
+    color: #d0d0d0;
+}
+
+/* ========================= */
+/* BLOCS TEXTE */
+/* ========================= */
+
+.ac-content {
+    max-width: 1000px;
+    margin: 0 auto 100px;
+}
+
+.ac-block {
+    margin-bottom: 50px;
+    padding: 35px;
+    border-left: 4px solid #f4d03f;
+    background: rgba(255,255,255,0.02);
+}
+
+.ac-block h2 {
+    color: #f4d03f;
+    margin-bottom: 20px;
+}
+
+.ac-block p {
+    line-height: 1.9;
+    color: #d0d0d0;
+}
+
+@media (max-width: 900px) {
+
+    .features-section {
+        grid-template-columns: 1fr;
+    }
+
+    .project-title {
+        font-size: 1.8rem;
+    }
+
+    .demo-title {
+        font-size: 1.6rem;
+    }
+}
+
+/* ========================= */
+/* AC33.05 - Planche tendance */
+/* ========================= */
+
+/* ================================================= */
+/* AC33.05 - HISTOMAPPING */
+/* ================================================= */
+
+.project-intro {
+    max-width: 1000px;
+    margin: 0 auto 80px;
+    text-align: center;
+}
+
+.project-category {
+    color: #f4d03f;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.project-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: #f4d03f;
+    margin-bottom: 25px;
+}
+
+.project-description {
+    max-width: 850px;
+    margin: 0 auto;
+    color: #d0d0d0;
+    line-height: 1.8;
+}
+
+/* ================================================= */
+/* TITRES DE SECTION */
+/* ================================================= */
+
+.section-title {
+    text-align: center;
+    color: #f4d03f;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    margin-bottom: 40px;
+}
+
+/* ================================================= */
+/* PLANCHE TENDANCE */
+/* ================================================= */
+
+.trendboard-section {
+    max-width: 1200px;
+    margin: 0 auto 100px;
+    text-align: center;
+}
+
+.trendboard-image {
+    width: 100%;
+    max-width: 1100px;
+
+    border-radius: 20px;
+
+    border: 2px solid rgba(244,208,63,0.4);
+
+    box-shadow:
+        0 0 20px rgba(244,208,63,0.15);
+
+    transition: 0.3s ease;
+}
+
+.trendboard-image:hover {
+    transform: scale(1.02);
+
+    box-shadow:
+        0 0 35px rgba(244,208,63,0.3);
+}
+
+.gallery-note {
+    margin-top: 20px;
+
+    color: #cfcfcf;
+
+    font-style: italic;
+}
+
+/* ================================================= */
+/* APPLICATION DANS LE FANZINE */
+/* ================================================= */
+
+.fanzine-application {
+    max-width: 1200px;
+    margin: 0 auto 100px;
+}
+
+.application-text {
+    max-width: 850px;
+
+    margin: 0 auto 50px;
+
+    text-align: center;
+
+    line-height: 1.8;
+
+    color: #d0d0d0;
+}
+
+/* ================================================= */
+/* GALERIE DES PAGES */
+/* ================================================= */
+
+.fanzine-gallery {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 30px;
+}
+
+.fanzine-page {
+    text-align: center;
+}
+
+.fanzine-page img {
+    width: 100%;
+
+    border-radius: 16px;
+
+    border: 2px solid rgba(244,208,63,0.3);
+
+    box-shadow:
+        0 0 15px rgba(244,208,63,0.1);
+
+    transition: 0.3s ease;
+}
+
+.fanzine-page img:hover {
+    transform: scale(1.03);
+
+    box-shadow:
+        0 0 25px rgba(244,208,63,0.25);
+}
+
+.fanzine-page figcaption {
+    margin-top: 15px;
+
+    color: #f4d03f;
+
+    font-weight: 600;
+}
+
+/* ================================================= */
+/* BOUTON PDF */
+/* ================================================= */
+
+.fanzine-button-wrapper {
+    text-align: center;
+
+    margin-top: 50px;
+}
+
+.fanzine-pdf-button {
+    display: inline-block;
+
+    padding: 16px 32px;
+
+    border: 2px solid #f4d03f;
+
+    border-radius: 50px;
+
+    color: #f4d03f;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+.fanzine-pdf-button:hover {
+    background: #f4d03f;
+
+    color: #000;
+
+    box-shadow:
+        0 0 25px rgba(244,208,63,0.4);
+}
+
+/* ================================================= */
+/* BLOCS TEXTE */
+/* ================================================= */
+
+.ac-content {
+    max-width: 1000px;
+    margin: 0 auto 100px;
+}
+
+.ac-block {
+    margin-bottom: 50px;
+
+    padding: 35px;
+
+    border-left: 4px solid #f4d03f;
+
+    background: rgba(255,255,255,0.02);
+}
+
+.ac-block h2 {
+    color: #f4d03f;
+
+    margin-bottom: 20px;
+}
+
+.ac-block p {
+    line-height: 1.9;
+
+    color: #d0d0d0;
+}
+
+/* ================================================= */
+/* RESPONSIVE */
+/* ================================================= */
+
+@media (max-width: 900px) {
+
+    .fanzine-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .project-title {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+}
+
+/* ================================================= */
+/* ENTREPRENDRE */
+/* ================================================= */
+
+.entreprendre-detail {
+    background: #111;
+}
+
+.ac-code-blue {
+    color: #5da9ff;
+}
+
+.ac-title-blue {
+    color: #5da9ff;
+}
+
+.project-category-blue {
+    color: #5da9ff;
+}
+
+.project-title-blue {
+    color: #5da9ff;
+}
+
+/* ================================================= */
+/* DOSSIER DE CONCEPTION */
+/* ================================================= */
+
+.dossier-section {
+    max-width: 1200px;
+    margin: 0 auto 100px;
+}
+
+.section-title-blue {
+    text-align: center;
+    color: #5da9ff;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    margin-bottom: 40px;
+}
+
+.dossier-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.dossier-page {
+    text-align: center;
+}
+
+.dossier-page img {
+    width: 100%;
+
+    border-radius: 16px;
+
+    border: 2px solid rgba(93,169,255,0.35);
+
+    box-shadow:
+        0 0 15px rgba(93,169,255,0.12);
+
+    transition: 0.3s ease;
+}
+
+.dossier-page img:hover {
+    transform: scale(1.03);
+
+    box-shadow:
+        0 0 30px rgba(93,169,255,0.3);
+}
+
+.dossier-page figcaption {
+    margin-top: 15px;
+
+    color: #5da9ff;
+
+    font-weight: 600;
+}
+
+.gallery-note {
+    text-align: center;
+
+    margin-top: 30px;
+
+    color: #cfcfcf;
+
+    font-style: italic;
+}
+
+/* ================================================= */
+/* BOUTON PDF */
+/* ================================================= */
+
+.dossier-button-wrapper {
+    text-align: center;
+
+    margin-top: 50px;
+}
+
+.dossier-pdf-button {
+    display: inline-block;
+
+    padding: 16px 32px;
+
+    border-radius: 50px;
+
+    border: 2px solid #5da9ff;
+
+    color: #5da9ff;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+.dossier-pdf-button:hover {
+    background: #5da9ff;
+
+    color: #111;
+
+    box-shadow:
+        0 0 25px rgba(93,169,255,0.4);
+}
+
+/* ================================================= */
+/* BLOCS TEXTE */
+/* ================================================= */
+
+.ac-block-blue {
+    border-left: 4px solid #5da9ff;
+
+    background: rgba(255,255,255,0.02);
+
+    padding: 35px;
+
+    margin-bottom: 40px;
+}
+
+.ac-block-blue h2 {
+    color: #5da9ff;
+
+    margin-bottom: 20px;
+}
+
+.ac-block-blue p {
+    color: #d0d0d0;
+
+    line-height: 1.9;
+}
+
+/* ================================================= */
+/* RESPONSIVE */
+/* ================================================= */
+
+@media (max-width: 900px) {
+
+    .dossier-gallery {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+.project-management-card {
+    max-width: 1100px;
+    margin: 0 auto 80px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.management-item {
+    padding: 30px;
+    border: 1px solid rgba(93,169,255,0.35);
+    border-radius: 18px;
+    background: rgba(93,169,255,0.05);
+}
+
+.management-item span {
+    display: block;
+    color: #5da9ff;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 15px;
+}
+
+.management-item p {
+    color: #d0d0d0;
+    line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+    .project-management-card {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================
+   AC35.02 - MANAGEMENT ET ASSURANCE QUALITÉ
+========================================================== */
+
+.quality-summary{
+    display:flex;
+    gap:25px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin:50px 0 70px;
+}
+
+.quality-item{
+    background:#111827;
+    border:1px solid rgba(83,169,255,.25);
+    border-radius:16px;
+    padding:25px;
+    width:280px;
+    text-align:center;
+    transition:.3s;
+}
+
+.quality-item:hover{
+    transform:translateY(-6px);
+    border-color:#53A9FF;
+    box-shadow:0 0 30px rgba(83,169,255,.18);
+}
+
+.quality-item span{
+    display:block;
+    font-size:.9rem;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    color:#53A9FF;
+    margin-bottom:12px;
+    font-weight:700;
+}
+
+.quality-item p{
+    color:#d5d5d5;
+    line-height:1.7;
+}
+
+
+/* =======================
+        PDCA
+======================= */
+
+.pdca-section{
+
+    margin-top:70px;
+
+}
+
+.pdca-step{
+
+    display:grid;
+    grid-template-columns:120px 360px 1fr;
+    gap:45px;
+    align-items:center;
+
+    margin-bottom:90px;
+
+}
+
+.pdca-step.reverse{
+
+    grid-template-columns:1fr 360px 120px;
+
+}
+
+.pdca-step.reverse .pdca-content{
+
+    order:1;
+
+}
+
+.pdca-step.reverse .pdca-image{
+
+    order:2;
+
+}
+
+.pdca-step.reverse .pdca-label{
+
+    order:3;
+
+}
+
+
+.pdca-label{
+
+    width:95px;
+    height:95px;
+
+    border-radius:50%;
+
+    background:#53A9FF;
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-weight:bold;
+    letter-spacing:2px;
+
+    font-size:1rem;
+
+    box-shadow:0 0 35px rgba(83,169,255,.45);
+
+}
+
+.pdca-image img{
+
+    width:100%;
+    display:block;
+
+    border-radius:14px;
+
+    border:2px solid rgba(83,169,255,.3);
+
+    transition:.35s;
+
+}
+
+.pdca-image img:hover{
+
+    transform:scale(1.03);
+
+    border-color:#53A9FF;
+
+    box-shadow:0 0 35px rgba(83,169,255,.35);
+
+}
+
+.pdca-content h2{
+
+    color:#53A9FF;
+
+    margin-bottom:18px;
+
+    font-size:2rem;
+
+}
+
+.pdca-content p{
+
+    color:#d8d8d8;
+
+    line-height:1.9;
+
+}
+
+
+/* =======================
+      BOUTON PDF
+======================= */
+
+.dossier-button-wrapper{
+
+    text-align:center;
+
+    margin-top:60px;
+
+}
+
+.dossier-pdf-button{
+
+    display:inline-block;
+
+    padding:16px 38px;
+
+    border-radius:40px;
+
+    text-decoration:none;
+
+    background:#53A9FF;
+
+    color:#081018;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.dossier-pdf-button:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 0 35px rgba(83,169,255,.4);
+
+}
+
+
+/* =======================
+      RESPONSIVE
+======================= */
+
+@media (max-width:1100px){
+
+    .pdca-step,
+    .pdca-step.reverse{
+
+        grid-template-columns:1fr;
+        text-align:center;
+
+    }
+
+    .pdca-step.reverse .pdca-content,
+    .pdca-step.reverse .pdca-image,
+    .pdca-step.reverse .pdca-label{
+
+        order:unset;
+
+    }
+
+    .pdca-label{
+
+        margin:auto;
+
+    }
+
+    .pdca-image{
+
+        max-width:550px;
+        margin:auto;
+
+    }
+
+}
+
+/* ======================================================= AC35.03 - ENTREPRENDRE Projet d'entrepreneuriat ================================================= */
+
+.entrepreneurship-traces{
+    margin:80px 0;
+}
+
+.entrepreneurship-gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(380px,1fr));
+    gap:40px;
+    margin-top:40px;
+}
+
+.entrepreneurship-card{
+    background:#181818;
+    border:1px solid rgba(88,170,255,.25);
+    border-radius:18px;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.entrepreneurship-card:hover{
+    transform:translateY(-6px);
+    border-color:#58AAFF;
+    box-shadow:0 0 25px rgba(88,170,255,.25);
+}
+
+.entrepreneurship-card img{
+    width:100%;
+    display:block;
+    transition:.35s;
+}
+
+.entrepreneurship-card:hover img{
+    transform:scale(1.03);
+}
+
+.entrepreneurship-card-content{
+    padding:24px;
+}
+
+.entrepreneurship-card-content h3{
+    color:#58AAFF;
+    font-size:1.4rem;
+    margin-bottom:15px;
+}
+
+.entrepreneurship-card-content p{
+    color:#d4d4d4;
+    line-height:1.8;
+    font-size:1rem;
+}
+
+.gallery-note{
+    margin-top:25px;
+    text-align:center;
+    font-style:italic;
+    color:#a8a8a8;
+}
+
+/* ===========================
+   AC35.04 - Présentation orale
+=========================== */
+
+/* ======================================
+   Structure de la présentation orale
+====================================== */
+
+.oral-structure{
+    margin-top:70px;
+}
+
+.oral-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:30px;
+    margin-top:40px;
+}
+
+.oral-card{
+    background:#1f2432;
+    border:1px solid rgba(90,170,255,.25);
+    border-radius:18px;
+    padding:30px;
+    transition:.3s;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+.oral-card:hover{
+    transform:translateY(-6px);
+    border-color:#56a8ff;
+    box-shadow:0 15px 35px rgba(86,168,255,.25);
+}
+
+.oral-card span{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    width:48px;
+    height:48px;
+
+    border-radius:50%;
+    background:#3e8ef7;
+    color:#fff;
+
+    font-weight:700;
+    font-size:1.1rem;
+
+    margin-bottom:20px;
+}
+
+.oral-card h3{
+    color:#ffffff;
+    margin-bottom:15px;
+    font-size:1.2rem;
+}
+
+.oral-card p{
+    color:#c9d1dd;
+    line-height:1.7;
+}
+
+/* ======================================
+   Bouton du diaporama
+====================================== */
+
+.dossier-button-wrapper{
+    margin-top:45px;
+    text-align:center;
+}
+
+.dossier-pdf-button{
+    display:inline-block;
+    padding:15px 34px;
+
+    background:#3e8ef7;
+    color:#fff;
+
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:700;
+
+    transition:.3s;
+}
+
+.dossier-pdf-button:hover{
+    background:#61a9ff;
+    transform:translateY(-3px);
+}
+
+/* ======================================
+   Responsive
+====================================== */
+
+@media (max-width:768px){
+
+    .oral-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+/* ====================================== */
+/* COMPÉTENCES MÉTIERS - CM1 */
+/* Couleur grille : #ff66cc */
+/* ====================================== */
+
+.ac-detail-title{
+    color: #ff66cc;
+    text-align: center;
+    text-shadow:
+        0 0 10px rgba(255,102,204,.45),
+        0 0 20px rgba(255,102,204,.35),
+        0 0 40px rgba(255,102,204,.20);
+}
+
+.metier-detail {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 70px 40px 100px;
+    background: #111;
+}
+
+/* Retour */
+
+.metier-back,
+.metier-detail .back-link {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.metier-back:hover,
+.metier-detail .back-link:hover {
+    color: var(--metiers);
+}
+
+/* Hero */
+
+.metier-hero {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.metier-code {
+    color: var(--metiers);
+    text-shadow:0 0 10px rgba(255,102,204,.35);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+.metier-title,
+.metier-detail .ac-detail-title {
+    color: var(--metiers);
+    text-align: center;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1.15;
+    max-width: 1100px;
+    margin: 0 auto 25px;
+}
+
+.metier-subtitle {
+    color: var(--metiers);
+    text-align: center;
+    font-size: 1.35rem;
+    font-weight: 500;
+    margin: 25px auto 60px;
+}
+
+
+/* Grande image */
+
+.metier-showcase {
+    max-width: 1100px;
+    margin: 0 auto 80px;
+    text-align: center;
+}
+
+.metier-main-visual {
+    display: block;
+    overflow: hidden;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 102, 204, 0.45);
+    box-shadow: 0 20px 55px rgba(255, 102, 204, 0.22);
+    transition: 0.35s ease;
+}
+
+.metier-main-visual:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 65px rgba(255, 102, 204, 0.35);
+}
+
+.metier-main-visual img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.gallery-note {
+    margin-top: 20px;
+    color: #bfbfbf;
+    font-style: italic;
+    text-align: center;
+}
+
+/* Cartes objectif / public / enjeu */
+
+.metier-intention {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+.metier-intro-card {
+    background: #1b1b22;
+    border: 1px solid rgba(255, 102, 204, 0.3);
+    border-radius: 18px;
+    padding: 30px;
+    transition: 0.3s ease;
+}
+
+.metier-intro-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--metiers);
+    box-shadow: 0 0 25px rgba(255, 102, 204, 0.18);
+}
+
+.metier-intro-card span {
+    display: inline-block;
+    margin-bottom: 18px;
+    padding: 8px 18px;
+    border-radius: 50px;
+    background: var(--metiers);
+    color: #111;
+    font-weight: 800;
+}
+
+.metier-intro-card p {
+    color: #d7d7d7;
+    line-height: 1.8;
+}
+
+/* Fonctionnalités */
+
+.metier-features {
+    margin-bottom: 80px;
+}
+
+.metier-features h2 {
+    color: var(--metiers);
+    text-align: center;
+    margin-bottom: 35px;
+    font-size: 2rem;
+}
+
+.metier-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.metier-feature {
+    background: #1f1f29;
+    padding: 28px;
+    border-radius: 18px;
+    border-left: 6px solid var(--metiers);
+    transition: 0.3s ease;
+}
+
+.metier-feature:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 22px rgba(255, 102, 204, 0.14);
+}
+
+.metier-feature h3 {
+    color: var(--metiers);
+    margin-bottom: 15px;
+}
+
+.metier-feature p {
+    color: #cfcfcf;
+    line-height: 1.8;
+}
+
+/* Blocs texte */
+
+.metier-content {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.metier-block {
+    background: #1b1b22;
+    border-radius: 20px;
+    padding: 35px;
+    border: 1px solid rgba(255, 102, 204, 0.25);
+    border-left: 5px solid var(--metiers);
+}
+
+.metier-block h2 {
+    color: var(--metiers);
+    margin-bottom: 18px;
+}
+
+.metier-block p {
+    color: #d6d6d6;
+    line-height: 1.9;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+    .metier-detail {
+        padding: 50px 24px 80px;
+    }
+
+    .metier-title,
+    .metier-detail .ac-detail-title {
+        font-size: 2.2rem;
+    }
+
+    .metier-subtitle {
+        font-size: 1.1rem;
+    }
+}
+
+/* ====================================== */
+/* CM2 - CONTENU AUDIOVISUEL */
+/* ====================================== */
+
+.cm-video-page{
+    background:#111;
+}
+
+/* ---------- Vidéo principale ---------- */
+
+.cm-video-showcase{
+    max-width:1200px;
+    margin:80px auto;
+    text-align:center;
+}
+
+.cm-video-intro span{
+    display:inline-block;
+    padding:8px 18px;
+    border-radius:50px;
+    background:#ff66cc;
+    color:#111;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.cm-video-intro h2{
+    color:#ff66cc;
+    font-size:2rem;
+    margin-bottom:20px;
+    text-shadow:
+        0 0 10px rgba(255,102,204,.45),
+        0 0 20px rgba(255,102,204,.30);
+}
+
+.cm-video-intro p{
+    max-width:850px;
+    margin:0 auto 45px;
+    color:#d5d5d5;
+    line-height:1.8;
+}
+
+.cm-main-video{
+    border-radius:22px;
+    overflow:hidden;
+    border:2px solid rgba(255,102,204,.35);
+    box-shadow:
+        0 0 35px rgba(255,102,204,.18);
+    transition:.35s;
+}
+
+.cm-main-video:hover{
+    transform:translateY(-8px);
+    box-shadow:
+        0 0 50px rgba(255,102,204,.28);
+}
+
+.cm-main-video video{
+    width:100%;
+    display:block;
+}
+
+.video-caption{
+    margin-top:20px;
+    color:#bfbfbf;
+    font-style:italic;
+}
+
+/* ---------- Les étapes ---------- */
+
+.cm-video-process{
+    max-width:1300px;
+    margin:90px auto;
+}
+
+.cm-video-process h2{
+    text-align:center;
+    color:#ff66cc;
+    font-size:2rem;
+    margin-bottom:55px;
+    text-shadow:
+        0 0 12px rgba(255,102,204,.35);
+}
+
+.cm-process-grid{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+    gap:30px;
+
+}
+
+.cm-process-card{
+
+    background:#1b1b22;
+    border-radius:20px;
+    padding:35px;
+    border:1px solid rgba(255,102,204,.25);
+    transition:.3s;
+
+}
+
+.cm-process-card:hover{
+
+    transform:translateY(-8px);
+    border-color:#ff66cc;
+    box-shadow:
+        0 0 30px rgba(255,102,204,.18);
+
+}
+
+.cm-process-card span{
+
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+
+    width:52px;
+    height:52px;
+
+    border-radius:50%;
+    background:#ff66cc;
+    color:#111;
+    font-weight:700;
+    margin-bottom:20px;
+
+}
+
+.cm-process-card h3{
+
+    color:#ff66cc;
+    margin-bottom:15px;
+
+}
+
+.cm-process-card p{
+
+    color:#d8d8d8;
+    line-height:1.8;
+
+}
+
+/* ---------- Blocs d'analyse ---------- */
+
+.metier-content{
+
+    max-width:1200px;
+    margin:90px auto;
+
+    display:flex;
+    flex-direction:column;
+    gap:35px;
+
+}
+
+.metier-block{
+
+    background:#1b1b22;
+    padding:40px;
+    border-radius:20px;
+
+    border-left:6px solid #ff66cc;
+    border:1px solid rgba(255,102,204,.25);
+
+}
+
+.metier-block h2{
+
+    color:#ff66cc;
+    margin-bottom:18px;
+    text-shadow:
+        0 0 8px rgba(255,102,204,.25);
+
+}
+
+.metier-block p{
+
+    color:#d6d6d6;
+    line-height:1.9;
+
+}
+
+/* ---------- Responsive ---------- */
+
+@media(max-width:900px){
+
+    .cm-video-intro h2{
+
+        font-size:1.7rem;
+
+    }
+
+    .cm-video-process h2{
+
+        font-size:1.7rem;
+
+    }
+
+    .cm-process-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
