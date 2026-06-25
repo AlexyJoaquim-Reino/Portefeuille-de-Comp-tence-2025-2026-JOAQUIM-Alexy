@@ -1,0 +1,1 @@
+# Portefeuille-de-Comp-tence-2025-2026-JOAQUIM-Alexy
