@@ -81,8 +81,8 @@ body {
 }
 
 .btn-start:hover {
-    border-color: var(--exprimer);
-    box-shadow: 0 0 25px rgba(255, 216, 77, 0.35);
+    border-color: #ffffff;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.35);
     transform: translateY(-3px);
 }
 
@@ -156,15 +156,10 @@ html {
 /* --------- PAGE SÉLECTION ----------- */
 
 .back-button-home {
-    position: relative;
-    top: 40px;          
-    left: 80px;
-
     display: inline-flex;
     align-items: center;
     gap: 8px;
 
-    margin: 20px 0 40px 80px;
     padding: 12px 22px;
 
     color: #ffffff;
@@ -172,21 +167,22 @@ html {
     font-size: 1rem;
     font-weight: 500;
 
-    border: 2px solid rgba(255, 255, 255, 0.25);
+    border: 2px solid rgba(255,255,255,.25);
     border-radius: 50px;
 
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255,255,255,.05);
     backdrop-filter: blur(8px);
 
-    transition: all 0.3s ease;
+    transition: .3s ease;
+
+    margin: 60px auto 50px;
 }
 
 .back-button-home:hover {
     background: #ffffff;
     color: #111;
-    border-color: #ffffff;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
-    transform: translateX(-5px);
+    box-shadow: 0 0 20px rgba(255,255,255,.4);
+    transform: translateY(-3px);
 }
 
 .selection {
@@ -198,7 +194,6 @@ html {
 
 .selection-title {
     position:fixed;
-    top: 4rem;
     
     width:100%;
     left: 0;
@@ -221,7 +216,7 @@ html {
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 25vh 0;
+    padding: 5vh 0;
 
     opacity: 0;
     animation: fadeUp 1.2s ease forwards;
@@ -346,6 +341,19 @@ html {
     backdrop-filter: blur(8px);
 
     transition: all .3s ease;
+
+    opacity: 0;
+    animation: fadeUp 1.2s ease forwards;
+}
+
+.back-button-entreprendre {
+    opacity: 0;
+    animation: fadeUp 1.2s ease forwards;
+}
+
+.back-button-metier {
+    opacity: 0;
+    animation: fadeUp 1.2s ease forwards;
 }
 
 .back-button:hover {
@@ -478,7 +486,7 @@ html {
 
 .ac-code {
     color: var(--exprimer);
-    font-size: 1.2rem;
+    font-size: 2rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     margin-bottom: 1rem;
@@ -619,7 +627,7 @@ html {
 
 .ac-number {
     display: block;
-    font-size: 1.3rem;
+    font-size: 2rem;
     color: #ffd84d;
     margin-bottom: 1rem;
     letter-spacing: 2px;
@@ -1340,6 +1348,18 @@ html {
 /* ENTREPRENDRE */
 /* ================================================= */
 
+.back-link-entreprendre {
+    display: inline-block;
+    margin-bottom: 3rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.back-link-entreprendre:hover {
+    color: var(--entreprendre);
+}
+
 .back-button-entreprendre {
     display: inline-flex;
     align-items: center;
@@ -1379,6 +1399,11 @@ html {
 
 .ac-title-blue {
     color: #5da9ff;
+
+    text-shadow:
+        0 0 12px rgba(93, 169, 255, 0.8),
+        0 0 25px rgba(93, 169, 255, 0.25),
+        0 0 45px rgba(93, 169, 255, 0.25);
 }
 
 .project-category-blue {
@@ -1387,7 +1412,12 @@ html {
 
 .project-title-blue {
     color: #5da9ff;
+    text-shadow:
+        0 0 12px rgba(93, 169, 255, 0.8),
+        0 0 25px rgba(93, 169, 255, 0.25),
+        0 0 45px rgba(93, 169, 255, 0.25);
 }
+
 
 /* ================================================= */
 /* DOSSIER DE CONCEPTION */
@@ -1849,6 +1879,52 @@ html {
     font-size:1rem;
 }
 
+/* ============================= */
+/* RESPONSIVE - AC35.03 */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+    .entrepreneurship-gallery {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .entrepreneurship-card {
+        width: 90%;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+
+    .entrepreneurship-card img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .entrepreneurship-card-content {
+        padding: 18px;
+    }
+
+    .entrepreneurship-card-content h3 {
+        font-size: 1.4rem;
+    }
+
+    .entrepreneurship-card-content p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .gallery-note {
+        width: 90%;
+        margin: 20px auto 0;
+        text-align: center;
+    }
+
+}
+
 .gallery-note{
     margin-top:25px;
     text-align:center;
@@ -1921,27 +1997,69 @@ html {
     line-height:1.7;
 }
 
-/* ======================================
-   Bouton du diaporama
-====================================== */
+/* Aperçu cliquable de la présentation */
 
-.dossier-button-wrapper{
-    margin-top:45px;
-    text-align:center;
+.presentation-preview {
+    max-width: 850px;
+    margin: 60px auto 80px;
+    text-align: center;
 }
 
-.dossier-pdf-button{
-    display:inline-block;
-    padding:15px 34px;
+.presentation-link {
+    position: relative;
+    display: block;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid rgba(93, 169, 255, 0.35);
+    box-shadow: 0 0 35px rgba(93, 169, 255, 0.22);
+    transition: 0.35s ease;
+}
 
-    background:#3e8ef7;
-    color:#fff;
+.presentation-link:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 55px rgba(93, 169, 255, 0.35);
+}
 
-    border-radius:12px;
-    text-decoration:none;
-    font-weight:700;
+.presentation-thumbnail {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: 0.35s ease;
+}
 
-    transition:.3s;
+.presentation-link:hover .presentation-thumbnail {
+    transform: scale(1.03);
+}
+
+.presentation-caption {
+    margin-top: 18px;
+    color: #bfc7d5;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.presentation-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.55);
+    opacity: 0;
+    transition: 0.3s ease;
+}
+
+.presentation-overlay span {
+    color: #ffffff;
+    background: rgba(93, 169, 255, 0.9);
+    padding: 14px 24px;
+    border-radius: 40px;
+    font-weight: 700;
+}
+
+.presentation-link:hover .presentation-overlay {
+    opacity: 1;
 }
 
 .dossier-pdf-button:hover{
@@ -1966,7 +2084,7 @@ html {
 /* Couleur grille : #ff66cc */
 /* ====================================== */
 
-.ac-detail-title{
+.ac-detail-title-metiers{
     color: #ff66cc;
     text-align: center;
     text-shadow:
@@ -2005,7 +2123,7 @@ html {
 .metier-code {
     color: var(--metiers);
     text-shadow:0 0 10px rgba(255,102,204,.35);
-    font-size: 0.95rem;
+    font-size: 2rem;
     font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -2016,6 +2134,9 @@ html {
 .metier-title,
 .metier-detail .ac-detail-title {
     color: var(--metiers);
+    text-shadow:
+        0 0 15px rgba(245, 106, 200, 0.45),
+        0 0 35px rgba(245, 106, 200, 0.45);
     text-align: center;
     font-size: clamp(2.2rem, 5vw, 4rem);
     line-height: 1.15;
@@ -2396,3 +2517,59 @@ html {
 
 }
 
+.metier-detail,
+.metier-back {
+    opacity: 0;
+    animation: fadeUp 1.2s ease forwards;
+}
+
+/* AUTRES REPSONSIVE */
+
+/* BOUTONS DE RETOUR ARRIERE */
+
+@media (max-width: 768px) {
+    .back-button {
+        display: flex;
+        width: fit-content;
+        max-width: calc(100% - 40px);
+
+        margin: 25px auto 40px;
+        padding: 10px 18px;
+
+        font-size: 0.9rem;
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .back-button-entreprendre {
+        display: flex;
+        width: fit-content;
+        max-width: calc(100% - 40px);
+
+        margin: 25px auto 40px;
+
+        padding: 10px 18px;
+        font-size: 0.9rem;
+
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .back-button-metier {
+        display: flex;
+        width: fit-content;
+        max-width: calc(100% - 40px);
+
+        margin: 25px auto 40px;
+
+        padding: 10px 18px;
+        font-size: 0.9rem;
+
+        justify-content: center;
+        text-align: center;
+    }
+}
