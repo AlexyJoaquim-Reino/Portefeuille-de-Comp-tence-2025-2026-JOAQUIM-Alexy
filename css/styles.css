@@ -260,6 +260,15 @@ html {
     text-shadow: 0 0 30px rgba(183, 107, 255, 0.6);
 }
 
+@media (max-width: 768px) {
+
+    .choice-card {
+        height: 40vh;
+        font-size: 2rem;
+    }
+
+}
+
 .arrow {
     position: fixed;
     left: 50%;
